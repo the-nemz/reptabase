@@ -1,0 +1,5 @@
+.js-focus-visible :focus:not(.focus-visible)
+{
+  // Only shows focus when using keyboard, not clicking
+  outline: none;
+}

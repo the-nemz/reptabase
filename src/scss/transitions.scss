@@ -1,0 +1,37 @@
+.FadeAnim
+{
+  transition: opacity $transition-slow;
+
+  &-appear
+  {
+    opacity: 0.01;
+  }
+
+  &-appear-active
+  {
+    opacity: 1;
+    transition: opacity $transition-slow;
+  }
+
+  &-enter
+  {
+    opacity: 0.01;
+  }
+
+  &-enter-active
+  {
+    opacity: 1;
+    transition: opacity $transition-slow;
+  }
+
+  &-leave
+  {
+    opacity: 1;
+  }
+
+  &-leave-active
+  {
+    opacity: 0.01;
+    transition: opacity $transition-slow;
+  }
+}
