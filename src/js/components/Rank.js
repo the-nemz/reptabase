@@ -23,17 +23,22 @@ export default class Rank extends React.Component {
   renderChildren(screenWidth, width) {
     const color = RANKNUM_TO_COLOR[this.props.rank.rankNum];
     const children = _.cloneDeep(this.props.children);
-    const segAngle = Math.PI / (children.length + 1)
+    const segAngleY = (2 * Math.PI / 3) / (children.length + 1);
+    const segAngleX = Math.PI / (children.length + 1);
 
     let childElems = [];
     for (const [i, child] of children.entries()) {
-      let angle = segAngle * (i +  1);
-      let y = 100 * Math.sin(angle);
-      let x = 50 + 100 * Math.cos(angle) / -2;
+      let angleY = (Math.PI / 6) + segAngleY * (i + 1);
+      let angleX = segAngleX * (i + 1);
+      let y = 100 * Math.sin(angleY);
+      let x = 50 + 100 * Math.cos(angleX) / -2;
+
+      let mod = ((i % 5) / 2) - 1;
+      let boost = children.length > 20 ? mod * 200 : 0;
 
 
       const style = {
-        top: `${y}%`,
+        top: `calc(${y}% + ${boost}px)`,
         right: `${(screenWidth - width) * x / 100}px`,
         width: width
       };
@@ -51,8 +56,9 @@ export default class Rank extends React.Component {
   render() {
     const color = RANKNUM_TO_COLOR[this.props.rank.rankNum];
 
-    const screenWidth = this.props.windowDims.width - 32;
-    const margin = 2 * screenWidth / (this.props.children.length + 1);
+    const count = Math.min(this.props.children.length + 1, 10)
+    const screenWidth = this.props.windowDims.width;
+    const margin = 2 * screenWidth / (count);
 
     return (
       <div className="Rank" style={{color: color}}>

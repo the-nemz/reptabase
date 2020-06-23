@@ -56,7 +56,9 @@ export default class Main extends React.Component {
         (result) => {
           let done = false;
           for (const entry of result.results) {
-            if (entry.rank === childRankName) {
+            if (!entry.numDescendants && childRankNum < 4) {
+              // do nothing if rank is > species and it has no children
+            } else if (entry.rank === childRankName) {
               children.push({
                 key: entry.key,
                 sciName: entry.canonicalName,
