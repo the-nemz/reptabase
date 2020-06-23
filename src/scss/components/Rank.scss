@@ -1,0 +1,36 @@
+.Rank
+{
+  position: relative;
+  color: $black;
+  height: 100vh;
+  width: 100vw;
+  padding: $gutter;
+  overflow: hidden;
+
+  &-title
+  {
+    text-align: center;
+  }
+
+  &-commonName
+  {
+    @include font-sizes(36px, 48px);
+    font-weight: bold;
+  }
+
+  &-sciName
+  {
+    @include font-sizes(24px, 32px);
+  }
+
+  &-children
+  {
+    position: relative;
+    height: 50vh;
+  }
+
+  &-child
+  {
+    position: absolute;
+  }
+}

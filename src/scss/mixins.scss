@@ -63,3 +63,11 @@
 {
   @include l-container;
 }
+
+
+.l-italic
+{
+  font-family: $font-secondary;
+  font-style: italic;
+  font-weight: normal
+}

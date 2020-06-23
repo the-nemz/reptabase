@@ -1,0 +1,16 @@
+.Child
+{
+  color: $white;
+  padding-top: 100%;
+  position: relative;
+  border-radius: 50%;
+  box-shadow: $light-shadow;
+
+  &-content
+  {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
