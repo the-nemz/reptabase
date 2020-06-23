@@ -25,7 +25,8 @@ export default class Child extends React.Component {
     return (
       <div className="Child" style={style}
            onMouseEnter={() => this.handleHoverChange()}
-           onMouseLeave={() => this.handleHoverChange()}>
+           onMouseLeave={() => this.handleHoverChange()}
+           onClick={() => this.props.onClick(this.props.child)}>
         <div className="Child-content">
           <div className="Child-sciName">
             {this.props.child.sciName}

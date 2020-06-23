@@ -20,13 +20,6 @@ export default class Rank extends React.Component {
     this.state = {};
   }
 
-  // componentDidMount() {
-  //   this.timerID = setInterval(
-  //     () => this.updateCoronas(),
-  //     500
-  //   );
-  // }
-
   renderChildren(screenWidth, width) {
     const color = RANKNUM_TO_COLOR[this.props.rank.rankNum];
     const children = _.cloneDeep(this.props.children);
@@ -42,12 +35,12 @@ export default class Rank extends React.Component {
       const style = {
         top: `${y}%`,
         right: `${(screenWidth - width) * x / 100}px`,
-        // width: `${2 * screenWidth / (children.length)}px`
         width: width
       };
       childElems.push(
-        <div className="Rank-child" style={style}>
-          <Child child={child} color={color} />
+        <div className="Rank-child" style={style} key={child.key}>
+          <Child child={child} color={color}
+                 onClick={(child) => this.props.onChildClick(child)} />
         </div>
       )
     }
@@ -60,7 +53,6 @@ export default class Rank extends React.Component {
 
     const screenWidth = this.props.windowDims.width - 32;
     const margin = 2 * screenWidth / (this.props.children.length + 1);
-    // const margin = (percentInner / 100) * (100 + percentInner);
 
     return (
       <div className="Rank" style={{color: color}}>
